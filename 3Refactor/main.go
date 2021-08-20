@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println("bibit")
+	fmt.Println(findFirstStringInBracket("bibit"))
 }
 
 func findFirstStringInBracket(str string) string {
