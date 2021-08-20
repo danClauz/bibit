@@ -7,9 +7,6 @@ func main() {
 	var results = make([][]string, 0)
 
 	for {
-		fmt.Println(words)
-		fmt.Println(len(words))
-
 		if len(words) < 1 {
 			break
 		}
