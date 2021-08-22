@@ -1,0 +1,50 @@
+{
+  "http_server": {
+    "host": "127.0.0.1",
+    "port": "1324",
+    "read_timeout": 5,
+    "write_timeout": 5
+  },
+  "grpc_server": {
+    "host": "127.0.0.1",
+    "port": "2435",
+    "read_timeout": 5,
+    "write_timeout": 5
+  },
+  "mysql": {
+    "master": {
+      "dsn": "root:@tcp(127.0.0.1:3306)/bmovie_search?charset=utf8&parseTime=True&loc=Local",
+      "max_idle_conn": 5,
+      "max_open_conn": 10,
+      "conn_max_lifetime": 300
+    },
+    "slave": {
+      "dsn": "root:@tcp(127.0.0.1:3306)/bmovie_search?charset=utf8&parseTime=True&loc=Local",
+      "max_idle_conn": 5,
+      "max_open_conn": 10,
+      "conn_max_lifetime": 300
+    }
+  },
+  "logger": {
+    "file_path": "./tmp/logs/",
+    "file_name": "bmovie.log",
+    "formatter": "text",
+    "stdout": true,
+    "report_caller": true
+  },
+  "datadog": {
+    "host": "",
+    "port": "",
+    "namespace": "bmovie.dev",
+    "is_enabled": true
+  },
+  "new_relic": {
+    "app_name": "bmovie-dev",
+    "app_key": "",
+    "is_enabled": true
+  },
+  "omdb": {
+    "host": "http://www.omdbapi.com",
+    "key": "faf7e5bb&s"
+  }
+}

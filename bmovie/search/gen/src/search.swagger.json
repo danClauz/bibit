@@ -1,0 +1,250 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "src/search.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "SearchService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/bmovie/v1/{imdbId}": {
+      "get": {
+        "operationId": "SearchService_DetailMovie",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/searchDetailMovieResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "imdbId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SearchService"
+        ]
+      }
+    },
+    "/bmovie/v1/{search}/{page}": {
+      "get": {
+        "operationId": "SearchService_SearchMovie",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/searchSearchMovieResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "SearchService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "searchDetailMovieResponse": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "rated": {
+          "type": "string"
+        },
+        "released": {
+          "type": "string"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "director": {
+          "type": "string"
+        },
+        "writer": {
+          "type": "string"
+        },
+        "actors": {
+          "type": "string"
+        },
+        "plot": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "awards": {
+          "type": "string"
+        },
+        "poster": {
+          "type": "string"
+        },
+        "ratings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/searchRating"
+          }
+        },
+        "metascore": {
+          "type": "string"
+        },
+        "imdbRating": {
+          "type": "string"
+        },
+        "imdbVotes": {
+          "type": "string"
+        },
+        "imdbId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "dvd": {
+          "type": "string"
+        },
+        "boxOffice": {
+          "type": "string"
+        },
+        "production": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "response": {
+          "type": "string"
+        }
+      }
+    },
+    "searchRating": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "searchSearch": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "imdbId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "poster": {
+          "type": "string"
+        }
+      }
+    },
+    "searchSearchMovieResponse": {
+      "type": "object",
+      "properties": {
+        "search": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/searchSearch"
+          }
+        },
+        "totalResults": {
+          "type": "string"
+        },
+        "response": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

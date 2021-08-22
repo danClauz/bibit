@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package search;
+import "google/api/annotations.proto";
+
+option go_package = "github.com/danClauz/bibit/bmovie/search/gen;searchpb";
+
+message SearchMovieRequest {
+  string search = 1;
+  int32 page = 2;
+}
+
+message Search {
+  string title = 1;
+  string year = 2;
+  string imdb_id = 3;
+  string type = 4;
+  string poster = 5;
+}
+
+message SearchMovieResponse {
+  repeated Search search = 1;
+  string total_results = 2;
+  string response = 3;
+}
+
+message DetailMovieRequest {
+  string imdb_id = 1;
+}
+
+message DetailMovieResponse {
+  string title = 1;
+  string year = 2;
+  string rated = 3;
+  string released = 4;
+  string runtime = 5;
+  string genre = 6;
+  string director = 7;
+  string writer = 8;
+  string actors = 9;
+  string plot = 10;
+  string language = 11;
+  string country = 12;
+  string awards = 13;
+  string poster = 14;
+  repeated Rating ratings = 15;
+  string metascore = 16;
+  string imdb_rating = 17;
+  string imdb_votes = 18;
+  string imdb_id = 19;
+  string type = 20;
+  string dvd = 21;
+  string box_office = 22;
+  string production = 23;
+  string website = 24;
+  string response = 25;
+}
+
+message Rating {
+  string source = 1;
+  string value = 2;
+}
+
+service SearchService {
+  rpc SearchMovie(SearchMovieRequest) returns (SearchMovieResponse) {
+    option (google.api.http) = {
+      get: "/bmovie/v1/{search}/{page}"
+    };
+  }
+  rpc DetailMovie(DetailMovieRequest) returns (DetailMovieResponse) {
+    option (google.api.http) = {
+      get: "/bmovie/v1/{imdb_id}"
+    };
+  }
+}
