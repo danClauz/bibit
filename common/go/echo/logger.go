@@ -1,9 +1,10 @@
 package echo
 
 import (
+	"io"
+
 	"github.com/labstack/gommon/log"
 	"github.com/sirupsen/logrus"
-	"io"
 )
 
 type LoggerWrapper struct {

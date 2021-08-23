@@ -1,10 +1,11 @@
 package logs
 
 import (
-	"github.com/sirupsen/logrus"
 	"io"
 	"log"
 	"os"
+
+	"github.com/sirupsen/logrus"
 )
 
 type (

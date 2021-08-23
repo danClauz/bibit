@@ -1,10 +1,11 @@
 package echo
 
 import (
-	"github.com/labstack/gommon/log"
-	"github.com/sirupsen/logrus"
 	"reflect"
 	"testing"
+
+	"github.com/labstack/gommon/log"
+	"github.com/sirupsen/logrus"
 )
 
 func TestNewLoggerWrapper(t *testing.T) {
