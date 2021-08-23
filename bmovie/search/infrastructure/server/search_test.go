@@ -2,6 +2,8 @@ package server
 
 import (
 	"context"
+	"testing"
+
 	"github.com/danClauz/bibit/bmovie/search/external/omdb"
 	searchpb "github.com/danClauz/bibit/bmovie/search/gen"
 	"github.com/danClauz/bibit/bmovie/search/interfaces"
@@ -12,7 +14,6 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus/hooks/test"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestServer_DetailMovie(t *testing.T) {
