@@ -1,0 +1,17 @@
+time="2021-08-23T10:32:40+07:00" level=info msg="running a rest api application" func=main.main.func1 file="/Users/danny.ferian/go/src/github.com/danClauz/bibit/bmovie/search/main.go:19"
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.5.0
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+time="2021-08-23T10:32:40+07:00" level=info msg="gRPC server is listening on 127.0.0.1:2435" func="github.com/danClauz/bibit/bmovie/search/infrastructure.(*Holder).ServeGrpc" file="/Users/danny.ferian/go/src/github.com/danClauz/bibit/bmovie/search/infrastructure/holder.go:82"
+⇨ http server started on 127.0.0.1:1324
+time="2021-08-23T10:33:40+07:00" level="echo" x-request-id="" remote_ip="127.0.0.1" host="127.0.0.1:1324" method="GET" uri="/bmovie/v1/tt4116284" user_agent="PostmanRuntime/7.28.3" status="404" latency_human="107.506µs" bytes_in="43" bytes_out="24"
+time="2021-08-23T10:34:20+07:00" level=info msg="receive request to search movie." func="github.com/danClauz/bibit/bmovie/search/infrastructure/controller.(*Controller).SearchMovie" file="/Users/danny.ferian/go/src/github.com/danClauz/bibit/bmovie/search/infrastructure/controller/search.go:22"
+time="2021-08-23T10:34:20+07:00" level="echo" x-request-id="" remote_ip="127.0.0.1" host="127.0.0.1:1324" method="GET" uri="/bmovie/v1/?i=tt4116284" user_agent="PostmanRuntime/7.28.3" status="200" latency_human="42.2628ms" bytes_in="43" bytes_out="1270"
+time="2021-08-23T10:34:33+07:00" level=info msg="receive signal interrupt" func=main.main.func1 file="/Users/danny.ferian/go/src/github.com/danClauz/bibit/bmovie/search/main.go:28"
+time="2021-08-23T10:34:33+07:00" level=info msg="closing resource" func="github.com/danClauz/bibit/bmovie/search/shared.(*Holder).Close" file="/Users/danny.ferian/go/src/github.com/danClauz/bibit/bmovie/search/shared/holder.go:22"
