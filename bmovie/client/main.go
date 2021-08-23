@@ -2,10 +2,11 @@ package main
 
 import (
 	"context"
+	"log"
+
 	searchpb "github.com/danClauz/bibit/bmovie/search/gen"
 	"github.com/golang/glog"
 	"google.golang.org/grpc"
-	"log"
 )
 
 func main() {
