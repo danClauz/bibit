@@ -7,6 +7,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -17,6 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SearchServiceClient interface {
+	HealthCheck(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*HealthCheckResponse, error)
 	SearchMovie(ctx context.Context, in *SearchMovieRequest, opts ...grpc.CallOption) (*SearchMovieResponse, error)
 	DetailMovie(ctx context.Context, in *DetailMovieRequest, opts ...grpc.CallOption) (*DetailMovieResponse, error)
 }
@@ -27,6 +29,15 @@ type searchServiceClient struct {
 
 func NewSearchServiceClient(cc grpc.ClientConnInterface) SearchServiceClient {
 	return &searchServiceClient{cc}
+}
+
+func (c *searchServiceClient) HealthCheck(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
+	out := new(HealthCheckResponse)
+	err := c.cc.Invoke(ctx, "/search.SearchService/HealthCheck", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *searchServiceClient) SearchMovie(ctx context.Context, in *SearchMovieRequest, opts ...grpc.CallOption) (*SearchMovieResponse, error) {
@@ -51,6 +62,7 @@ func (c *searchServiceClient) DetailMovie(ctx context.Context, in *DetailMovieRe
 // All implementations must embed UnimplementedSearchServiceServer
 // for forward compatibility
 type SearchServiceServer interface {
+	HealthCheck(context.Context, *emptypb.Empty) (*HealthCheckResponse, error)
 	SearchMovie(context.Context, *SearchMovieRequest) (*SearchMovieResponse, error)
 	DetailMovie(context.Context, *DetailMovieRequest) (*DetailMovieResponse, error)
 	mustEmbedUnimplementedSearchServiceServer()
@@ -60,6 +72,9 @@ type SearchServiceServer interface {
 type UnimplementedSearchServiceServer struct {
 }
 
+func (UnimplementedSearchServiceServer) HealthCheck(context.Context, *emptypb.Empty) (*HealthCheckResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HealthCheck not implemented")
+}
 func (UnimplementedSearchServiceServer) SearchMovie(context.Context, *SearchMovieRequest) (*SearchMovieResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchMovie not implemented")
 }
@@ -77,6 +92,24 @@ type UnsafeSearchServiceServer interface {
 
 func RegisterSearchServiceServer(s *grpc.Server, srv SearchServiceServer) {
 	s.RegisterService(&_SearchService_serviceDesc, srv)
+}
+
+func _SearchService_HealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).HealthCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/search.SearchService/HealthCheck",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).HealthCheck(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _SearchService_SearchMovie_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -119,6 +152,10 @@ var _SearchService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "search.SearchService",
 	HandlerType: (*SearchServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "HealthCheck",
+			Handler:    _SearchService_HealthCheck_Handler,
+		},
 		{
 			MethodName: "SearchMovie",
 			Handler:    _SearchService_SearchMovie_Handler,

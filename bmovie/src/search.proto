@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package search;
 import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
 
 option go_package = "github.com/danClauz/bibit/bmovie/search/gen;searchpb";
 
@@ -61,7 +62,16 @@ message Rating {
   string value = 2;
 }
 
+message HealthCheckResponse {
+  string status = 1;
+}
+
 service SearchService {
+  rpc HealthCheck(google.protobuf.Empty) returns (HealthCheckResponse) {
+    option (google.api.http) = {
+      get: "/bmovie/v1/health-check"
+    };
+  }
   rpc SearchMovie(SearchMovieRequest) returns (SearchMovieResponse) {
     option (google.api.http) = {
       get: "/bmovie/v1/{search}/{page}"
