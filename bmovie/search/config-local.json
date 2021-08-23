@@ -11,6 +11,12 @@
     "read_timeout": 5,
     "write_timeout": 5
   },
+  "grpc_gateway": {
+    "host": "127.0.0.1",
+    "port": "5001",
+    "read_timeout": 5,
+    "write_timeout": 5
+  },
   "mysql": {
     "master": {
       "dsn": "root:@tcp(127.0.0.1:3306)/bmovie_search?charset=utf8&parseTime=True&loc=Local",

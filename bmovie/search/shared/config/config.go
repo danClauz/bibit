@@ -56,14 +56,15 @@ type (
 	}
 
 	EnvConfig struct {
-		env        string
-		HttpServer *server   `json:"http_server"`
-		GrpcServer *server   `json:"grpc_server"`
-		Mysql      *mysql    `json:"mysql"`
-		Logger     *logger   `json:"logger"`
-		Datadog    *datadog  `json:"datadog"`
-		NewRelic   *newRelic `json:"new_relic"`
-		Omdb       *Omdb     `json:"omdb"`
+		env         string
+		HttpServer  *server   `json:"http_server"`
+		GrpcServer  *server   `json:"grpc_server"`
+		GrpcGateway *server   `json:"grpc_gateway"`
+		Mysql       *mysql    `json:"mysql"`
+		Logger      *logger   `json:"logger"`
+		Datadog     *datadog  `json:"datadog"`
+		NewRelic    *newRelic `json:"new_relic"`
+		Omdb        *Omdb     `json:"omdb"`
 	}
 )
 
