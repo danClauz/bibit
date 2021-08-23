@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"fmt"
+
 	"github.com/danClauz/bibit/bmovie/search/shared/utils"
 	"github.com/labstack/echo/v4/middleware"
 )

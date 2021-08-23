@@ -2,42 +2,43 @@ package infrastructure
 
 import (
 	"fmt"
+	"net"
+	"net/http"
+	"time"
+
+	"github.com/danClauz/bibit/bmovie/search/infrastructure/controller"
+
 	searchpb "github.com/danClauz/bibit/bmovie/search/gen"
 	"github.com/danClauz/bibit/bmovie/search/infrastructure/gateway"
 	"github.com/danClauz/bibit/bmovie/search/infrastructure/server"
 	"github.com/danClauz/bibit/bmovie/search/shared"
 	"go.uber.org/dig"
 	"google.golang.org/grpc"
-	"net"
-	"net/http"
-	"time"
 )
 
 type Holder struct {
 	dig.In
-	Gateway *gateway.Gateway
-	Server  *server.Server
-	Sh      shared.Holder
+	Controller *controller.Controller
+	Gateway    *gateway.Gateway
+	Server     *server.Server
+	Sh         shared.Holder
 }
 
 func (h *Holder) ServeHttp() {
-	RegisterDefaultMiddleware(h)
 	shared := h.Sh
 	logger := shared.Logger
-
-	bmovie := shared.Echo.Group("/bmovie")
-
-	//bmovie.GET("/health-check", h.Controllers.HealthCheck)
-
-	v1 := bmovie.Group("/v1")
-
-	home := v1.Group("/")
-	home.GET("", h.Gateway.SearchMovie)
-
 	serverCfg := shared.Config.HttpServer
 
+	RegisterDefaultMiddleware(h)
+	bmovie := shared.Echo.Group("/bmovie")
+	bmovie.GET("/health-check", h.Controller.HealthCheck)
+
+	v1 := bmovie.Group("/v1")
+	home := v1.Group("/")
+	home.GET("", h.Controller.SearchMovie)
+
 	s := &http.Server{
-		Addr:         fmt.Sprintf("%s:%s", serverCfg.Host, "8080"),
+		Addr:         fmt.Sprintf("%s:%s", serverCfg.Host, serverCfg.Port),
 		ReadTimeout:  serverCfg.ReadTimeout * time.Second,
 		WriteTimeout: serverCfg.WriteTimeout * time.Second,
 	}

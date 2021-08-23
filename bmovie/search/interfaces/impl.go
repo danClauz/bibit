@@ -2,6 +2,7 @@ package interfaces
 
 import (
 	"context"
+
 	"github.com/danClauz/bibit/bmovie/search/application"
 	"github.com/danClauz/bibit/bmovie/search/model"
 	"github.com/danClauz/bibit/bmovie/search/shared"

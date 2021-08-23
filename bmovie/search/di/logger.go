@@ -1,11 +1,12 @@
 package di
 
 import (
+	"strings"
+
 	"github.com/danClauz/bibit/bmovie/search/shared/config"
 	"github.com/danClauz/bibit/common/go/logs"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"strings"
 )
 
 func NewLogger(cfg *config.EnvConfig) (*logrus.Logger, error) {

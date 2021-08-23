@@ -3,10 +3,11 @@ package omdb
 import (
 	"context"
 	"fmt"
+	"net/http"
+
 	"github.com/danClauz/bibit/bmovie/search/shared/errors"
 	"github.com/danClauz/bibit/bmovie/search/shared/logtag"
 	"github.com/danClauz/bibit/bmovie/search/shared/utils"
-	"net/http"
 )
 
 const (

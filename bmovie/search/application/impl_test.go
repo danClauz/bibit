@@ -2,6 +2,8 @@ package application
 
 import (
 	"context"
+	"testing"
+
 	"github.com/danClauz/bibit/bmovie/search/external/omdb"
 	omdb_mock "github.com/danClauz/bibit/bmovie/search/external/omdb/mocks"
 	"github.com/danClauz/bibit/bmovie/search/repository"
@@ -11,7 +13,6 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus/hooks/test"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func Test_service_ListMovieByTitle(t *testing.T) {

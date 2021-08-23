@@ -2,10 +2,11 @@ package omdb
 
 import (
 	"context"
-	"github.com/danClauz/bibit/bmovie/search/shared"
 	"net"
 	"net/http"
 	"time"
+
+	"github.com/danClauz/bibit/bmovie/search/shared"
 )
 
 //go:generate mockgen -source=client.go -destination=mocks/omdb_mock.go -package=omdb_mock

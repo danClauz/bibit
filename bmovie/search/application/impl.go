@@ -2,6 +2,7 @@ package application
 
 import (
 	"context"
+
 	"github.com/danClauz/bibit/bmovie/search/external/omdb"
 	"github.com/danClauz/bibit/bmovie/search/model"
 	"github.com/danClauz/bibit/bmovie/search/repository"

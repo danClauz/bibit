@@ -1,9 +1,10 @@
 package model
 
 import (
+	"time"
+
 	"github.com/danClauz/bibit/bmovie/search/external/omdb"
 	searchpb "github.com/danClauz/bibit/bmovie/search/gen"
-	"time"
 )
 
 type SearchHistory struct {

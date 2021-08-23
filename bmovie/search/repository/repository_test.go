@@ -2,13 +2,15 @@ package repository
 
 import (
 	"context"
+
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/danClauz/bibit/bmovie/search/model"
 	"github.com/danClauz/bibit/bmovie/search/shared"
 
+	"testing"
+
 	"github.com/sirupsen/logrus/hooks/test"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func Test_repo_Store(t *testing.T) {

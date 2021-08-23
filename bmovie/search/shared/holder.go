@@ -1,12 +1,13 @@
 package shared
 
 import (
+	"io"
+
 	"github.com/danClauz/bibit/bmovie/search/shared/config"
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"
 	"go.uber.org/dig"
 	"gorm.io/gorm"
-	"io"
 )
 
 type Holder struct {

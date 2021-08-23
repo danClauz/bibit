@@ -2,6 +2,8 @@ package interfaces
 
 import (
 	"context"
+	"testing"
+
 	"github.com/danClauz/bibit/bmovie/search/application"
 	application_mock "github.com/danClauz/bibit/bmovie/search/application/mocks"
 	"github.com/danClauz/bibit/bmovie/search/model"
@@ -9,7 +11,6 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func Test_service_DetailMovie(t *testing.T) {

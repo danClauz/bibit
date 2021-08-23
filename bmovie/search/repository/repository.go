@@ -2,16 +2,17 @@ package repository
 
 import (
 	"context"
+
 	"github.com/danClauz/bibit/bmovie/search/shared"
 	"github.com/danClauz/bibit/bmovie/search/shared/utils"
 )
 
 //go:generate mockgen -source=repository.go -destination=mocks/repository_mock.go -package=repository_mock Repository
 type (
-	Repository interface{
+	Repository interface {
 		Store(ctx context.Context, reqId string, obj interface{}) error
 	}
-	repo       struct {
+	repo struct {
 		sh shared.Holder
 	}
 )

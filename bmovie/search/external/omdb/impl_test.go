@@ -2,13 +2,14 @@ package omdb
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+
 	"github.com/danClauz/bibit/bmovie/search/shared"
 	"github.com/danClauz/bibit/bmovie/search/shared/config"
 	"github.com/sirupsen/logrus/hooks/test"
 	"github.com/stretchr/testify/assert"
-	"net/http"
-	"net/http/httptest"
-	"testing"
 )
 
 func Test_client_SearchMovie(t *testing.T) {

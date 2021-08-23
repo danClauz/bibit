@@ -2,12 +2,13 @@ package main
 
 import (
 	"flag"
-	"github.com/danClauz/bibit/bmovie/search/di"
-	"github.com/danClauz/bibit/bmovie/search/infrastructure"
-	"github.com/danClauz/bibit/bmovie/search/shared"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/danClauz/bibit/bmovie/search/di"
+	"github.com/danClauz/bibit/bmovie/search/infrastructure"
+	"github.com/danClauz/bibit/bmovie/search/shared"
 )
 
 func main() {

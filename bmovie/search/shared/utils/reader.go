@@ -18,4 +18,3 @@ func ReadAll(body io.Reader, out interface{}) error {
 
 	return nil
 }
-
